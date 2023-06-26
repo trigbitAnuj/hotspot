@@ -1,7 +1,7 @@
-"use client";
+// import "../app/globals.css";
 import Image from "next/image";
 import { FaStar } from "react-icons/fa";
-
+import React from "react";
 import { Montserrat } from "next/font/google";
 
 const montserrat = Montserrat({
