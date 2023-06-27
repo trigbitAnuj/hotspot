@@ -11,7 +11,13 @@ import { useRouter } from "next/navigation";
 const Title: React.FC = () => {
   return (
     <Link href="/">
-      <Image src="/logo.png" alt="app-logo" width={100} height={100} />
+      <Image
+        src="/logo.png"
+        alt="app-logo"
+        width={100}
+        height={100}
+        className="xs:hidden"
+      />
     </Link>
   );
 };
@@ -26,12 +32,12 @@ const Header = () => {
   };
 
   return (
-    <header className="flex  justify-between  bg-[#1b1b1b] shadow-header">
+    <header className="flex  justify-between  bg-[#1b1b1b] shadow-header min-w-[420px] sm:py-2">
       <Title />
 
-      <section className=" flex px-10">
-        <ul className="flex items-center gap-10 text-white text-lg">
-          <li className="hover:text-blue-500 hover:underline active:underline">
+      <section className=" flex px-10 ">
+        <ul className="flex items-center gap-10 text-white lg:text-lg md:text-base sm:text-sm xs:text-xs ">
+          <li className="hover:text-blue-500 hover:underline active:underline ">
             <Link href="/">Home</Link>
           </li>
           <li className="hover:text-blue-500 hover:underline active:text-blue-500">
@@ -40,10 +46,10 @@ const Header = () => {
           <li className="hover:text-blue-500 hover:underline active:underline">
             <Link href="/contact">Contact</Link>
           </li>
-          <li className="hover:text-blue-500">
+          <li className="hover:text-blue-500 ">
             <Link href="/cart">
               <span className="relative inline-block">
-                <FaShoppingCart style={{ fontSize: "20px" }} />
+                <FaShoppingCart className="sm:text-xs md:text-sm lg:text-lg" />
                 <path
                   d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
                   clipRule="evenodd"
@@ -59,7 +65,7 @@ const Header = () => {
           </li>
           <button
             onClick={login}
-            className="px-3 py-2 border border-red-500  rounded-md shadow-md shadow-red-500/20 hover:bg-red-600 "
+            className="md:px-3 md:py-2 md:text-base border lg:px-3 lg:py-2 lg:text-lg border-red-500   rounded-md shadow-md shadow-red-500/20 hover:bg-red-600 sm:px-2 sm:py-2 sm:text-sm xs:px-1 xs:py-1 xs:text-xs "
           >
             Login
           </button>
