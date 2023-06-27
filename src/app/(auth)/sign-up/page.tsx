@@ -17,17 +17,17 @@ const SignUp = () => {
     router.push("/login");
   };
   return (
-    <section className=" flex justify-center items-center flex-col  mt-5">
+    <section className=" flex justify-center items-center flex-col  mt-5 min-w-[400px]">
       <h1 className="font-bold text-3xl mb-2">Signup</h1>
       <div className="bg-blue-500 p-4 rounded-[100%] ">
         <FaLock style={{ fontSize: "40px" }} />
       </div>
 
-      <section className=" grid w-2/5 ">
+      <section className=" grid w-2/5 min-w-[400px] ">
         <form
           action=""
           onSubmit={(e) => handlelogin(e)}
-          className="grid gap-2 "
+          className="grid gap-2 min-w-[400px]"
         >
           <label htmlFor="email" className="font-semibold">
             Username
