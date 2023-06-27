@@ -124,8 +124,8 @@ const Home: NextPage = () => {
   }
 
   return (
-    <>
-      <section className="flex justify-center items-center mt-9 mb-9  ">
+    <section className="min-w-[400px] min-h-screen">
+      <section className="flex justify-center items-center mt-9 mb-9    ">
         <input
           type="text"
           placeholder="Search for restaurant..."
@@ -146,7 +146,7 @@ const Home: NextPage = () => {
       {restaurants.length === 0 && !error ? (
         <Shimmer />
       ) : (
-        <section className="flex justify-center flex-wrap gap-5 ">
+        <section className="flex justify-center flex-wrap gap-5 min-w-[400px] ">
           {filteredRestaurants.map((restaurant) => (
             <Link
               href={`/restaurant/${restaurant.data.id}`}
@@ -157,7 +157,7 @@ const Home: NextPage = () => {
           ))}
         </section>
       )}
-    </>
+    </section>
   );
 };
 export default Home;
