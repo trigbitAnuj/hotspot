@@ -21,7 +21,7 @@ const CrousalComponent: React.FC<PropsType> = ({ data }) => {
     }
   };
   return (
-    <section className="flex justify-center items-center bg-slate-500 ">
+    <section className="flex justify-center items-center bg-slate-500  md:hidden ">
       <button
         onClick={handleOnClickLeft}
         className=" text-black bg-white px-2 py-2   rounded-full "
@@ -42,9 +42,9 @@ const CrousalComponent: React.FC<PropsType> = ({ data }) => {
         </svg>
       </button>
 
-      <div className="w-[75%] h-60  p-2 relative overflow-hidden ">
+      <div className="w-[75%] h-60  p-2 relative overflow-hidden  ">
         <section
-          className="flex  w-full  absolute [&::-webkit-scrollbar]:hidden   gap-4  py-2  overflow-x-auto scroll-smooth "
+          className="flex  w-full  absolute [&::-webkit-scrollbar]:hidden  justify-center  gap-4  py-2  overflow-x-auto scroll-smooth "
           id="box"
         >
           {data.map((card) => (
