@@ -43,59 +43,60 @@ const CartComponent: React.FC = () => {
   };
 
   return (
-    <section className="flex justify-center  flex-col">
+    <section className="flex justify-center  flex-col min-w-[400px] min-h-[67vh]  ">
       <h1
         className={roboto.className}
         style={{ fontSize: "40px", textAlign: "center" }}
       >
         Cart
       </h1>
-      <section className="grid sm:grid-cols-[1fr_auto]  mx-[20px] max-w-4xl mt-10">
-        <section className="items w-[60%]">
+      <section className="lg:grid ld:grid-rows-[1fr_1fr]  lg:gap-2   ">
+        <section className="">
           {cartItems.length ? (
             cartItems.map(({ item, quantity }) => {
               const { description, id, imageId, name } = item?.card?.info;
               return (
-                <section key={id} className="grid grid-cols-[200px_1fr_auto] ">
-                  <section className="py-4 ">
+                <section
+                  key={id}
+                  className="grid  lg:grid-cols-[100px_1fr_auto]   justify-center items-center "
+                >
+                  <section className="py-4 flex flex-col gap-2 px-4   sm:w-[100px] lg:w-[150px] ">
                     <Image
                       className="rounded"
                       src={ITEM_IMG_CDN_URL + imageId}
                       alt={name}
-                      width={150}
-                      height={150}
+                      width={100}
+                      height={100}
+                    />
+                    <label htmlFor="quantity">Quantity</label>
+                    <input
+                      className="border-2 sm:w-[100px] lg:w-[150px] "
+                      type="number"
+                      name="quantity"
+                      id="quantity"
+                      value={quantity}
+                      onChange={(e) => {
+                        handleQuantityChange(e, { item, quantity });
+                      }}
                     />
                   </section>
-                  <section className=" flex justify-between">
-                    <section className="flex flex-col p-4">
+                  <section className=" flex sm:ml-4 lg:ml-20">
+                    <section className="flex flex-col p-4 sm:text-xs">
                       <h1 className={roboto.className}>{name}</h1>
-                      <p className="text-gray-400 line-clamp-3">
+                      <p className="text-gray-400  line-clamp-3 lg:w-[40vw]">
                         {description}
                       </p>
-
-                      <label htmlFor="quantity">Quantity</label>
-                      <input
-                        className="border-2  w-[200px] "
-                        type="number"
-                        name="quantity"
-                        id="quantity"
-                        value={quantity}
-                        onChange={(e) => {
-                          handleQuantityChange(e, { item, quantity });
-                        }}
-                      />
-                    </section>
-
-                    <section className="py-4">
-                      <h1 className={roboto.className}>Price</h1>
-                      <p>
-                        {getSubTotal([{ item, quantity }]) > 0
-                          ? new Intl.NumberFormat("en-IN", {
-                              style: "currency",
-                              currency: "INR",
-                            }).format(getSubTotal([{ item, quantity }]) / 100)
-                          : 0.0}
-                      </p>
+                      <section className="py-4">
+                        <h1 className={roboto.className}>Price</h1>
+                        <p>
+                          {getSubTotal([{ item, quantity }]) > 0
+                            ? new Intl.NumberFormat("en-IN", {
+                                style: "currency",
+                                currency: "INR",
+                              }).format(getSubTotal([{ item, quantity }]) / 100)
+                            : 0.0}
+                        </p>
+                      </section>
                     </section>
                   </section>
                 </section>
@@ -114,16 +115,18 @@ const CartComponent: React.FC = () => {
               </h1>
               <Link
                 href="/"
-                className="border-2  border-blue-400 p-2 rounded-md hover:bg-blue-400 hover:text-white"
+                className="border-2 mt-3  border-blue-400 p-2 rounded-md hover:bg-blue-400 hover:text-white"
               >
                 Eat with Hotspot
               </Link>
             </section>
           )}
         </section>
-        <section className="subtotal mr-7">
-          <section className="flex flex-col justify-center items-center ">
-            <h1 className="font-semibold text-2xl">SubTotal</h1>
+        <section className="subtotal mx-5   ">
+          <section className="flex  justify-around items-center ">
+            <h1 className="font-semibold   md:text-base   lg:text-2xl">
+              Total Amount
+            </h1>
             <p>
               {getSubTotal(cartItems) > 0
                 ? new Intl.NumberFormat("en-IN", {
@@ -136,7 +139,7 @@ const CartComponent: React.FC = () => {
           {cartItems.length > 0 ? (
             <section className="text-center mt-5">
               <button
-                className="p-4 bg-red-400 hover:bg-red-500 text-white"
+                className="p-4 bg-red-400 hover:bg-red-500 text-white rounded-lg"
                 onClick={DeleteCartItems}
               >
                 Clear Cart
