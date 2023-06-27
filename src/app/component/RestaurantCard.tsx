@@ -36,7 +36,7 @@ const RestaurantCard: React.FC<Props> = ({
   avgRating,
 }) => {
   return (
-    <section className="  w-[220px] h-[300px]  p-2  border rounded-md mt-5 mb-5 shadow-custom transition-transform hover:-translate-y-1 duration-500 ">
+    <section className=" min-w-[200px] w-[220px]  h-[300px]  p-2  border rounded-md mt-5 mb-5 shadow-custom transition-transform hover:-translate-y-1 duration-500 ">
       <Image
         src={srcImage(cloudinaryImageId)}
         alt="restaurant-img"
