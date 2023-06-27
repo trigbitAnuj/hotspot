@@ -16,18 +16,18 @@ const montserrat = Montserrat({
 const About: NextPage = () => {
   return (
     <section className={montserrat.className}>
-      <section className="flex justify-center items-center  flex-wrap  mx-auto ">
+      <section className="flex justify-center items-center  flex-wrap  mx-auto min-w-[400px] ">
         <section className="left  p-3 mt-7  ">
-          <h1 className="text-6xl m-3 leading-normal">
+          <h1 className="text-6xl m-3 leading-normal lg:text-center">
             Welcome to
             <br />
             The world of
             <br />
-            <span className=" text-white bg-[#d97919] rounded-md  p-2 ">
+            <span className=" text-white bg-[#d97919] rounded-md  p-2  ">
               Tasty & fresh food
             </span>
           </h1>
-          <h4 className="pt-2 text-xl italic ">
+          <h4 className="pt-2 text-xl italic md:text-center  ">
             Better you will feel if you eat a Hot
             <span className="text-[#d97919]">Spot</span> fresh meal
           </h4>
