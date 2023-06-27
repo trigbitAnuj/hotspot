@@ -3,10 +3,10 @@ import React from "react";
 
 const FooterComponent = () => {
   return (
-    <section className=" overflow-hidden bg-white text-gray-600 py-3 min-w-[400px]">
-      <div className="container  mx-auto px-4">
+    <section className=" overflow-hidden bg-white text-gray-600  min-w-[400px]  border-t-2 border-slate-700">
+      <div className="container  mx-auto px-2">
         <div className=" flex items-center justify-between md:flex-col">
-          <div className="w-auto p-4 ">
+          <div className="w-auto p-5 ">
             <a href="#" className="flex">
               <Image src={"/logo.png"} alt="logo_img" width={50} height={50} />
               <div className="inline-flex items-center">
@@ -14,7 +14,7 @@ const FooterComponent = () => {
               </div>
             </a>
           </div>
-          <div className="w-auto p-5 md:p-3">
+          <div className="w-auto p-2 ">
             <ul className=" flex  items-center">
               <li className="p-2">
                 <a
@@ -40,7 +40,7 @@ const FooterComponent = () => {
                   Return Policy
                 </a>
               </li>
-              <li className="p-2">
+              <li className="p-5">
                 <a
                   className="font-medium text-gray-600 hover:text-gray-700"
                   href="#"
@@ -50,7 +50,7 @@ const FooterComponent = () => {
               </li>
             </ul>
           </div>
-          <div className="w-auto p-8">
+          <div className="w-auto p-5">
             <div className=" flex ">
               <div className="w-auto p-1.5">
                 <a href="#">
