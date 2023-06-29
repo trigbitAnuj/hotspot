@@ -59,8 +59,6 @@ export const UseAuthProvider = () => {
         localStorage.setItem("user", JSON.stringify(result));
       })
       .catch((e) => {
-        const errorCode = e.code;
-        console.log(errorCode);
         if (e instanceof Error) {
           if (e.message.includes(AuthErrorCodes.POPUP_CLOSED_BY_USER)) {
             throw new Error("Pop up closed BY user");
