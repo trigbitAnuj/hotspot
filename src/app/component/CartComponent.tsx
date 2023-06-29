@@ -1,5 +1,4 @@
 "use client";
-// import "../app/globals.css";
 import React from "react";
 import { RootState } from "@/GlobalRedux/store";
 import { useSelector } from "react-redux";
