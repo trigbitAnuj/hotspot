@@ -7,15 +7,14 @@ import FooterComponent from "@/app/component/FooterComponent";
 import { UseAuthProvider } from "@/firebase/auth";
 import Login from "@/app/(auth)/login/page";
 import { useRouter } from "next/navigation";
-import { getUserfromLocalStorage } from "@/utils";
 
 export const CheckUserLogInProvider: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
   const router = useRouter();
-  const { user } = getUserfromLocalStorage();
+  const { user } = UseAuthProvider();
   if (!user) {
-    router.push("/login");
+    return <Login />;
   } else {
     return children;
   }
@@ -26,9 +25,11 @@ const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
 
   return (
     <Provider store={store}>
-      <Header />
-      {children}
-      <FooterComponent />
+      <QueryClientProvider client={queryClient}>
+        <Header />
+        {children}
+        <FooterComponent />
+      </QueryClientProvider>
     </Provider>
   );
 };
