@@ -31,7 +31,7 @@ const Header = () => {
   const cartItems = useSelector((state: RootState) => state.cart.value);
   const cartItemsLength = getcartItems(cartItems);
   const [showMenu, setShowMenu] = useState(false);
-  const dropDownButtonRef = useRef<HTMLButtonElement | null>(null);
+  const dropDownButtonRef = useRef<HTMLDivElement | null>(null);
   const timerId = useRef<ReturnType<typeof setInterval> | null>(null);
 
   console.log(user);
@@ -70,7 +70,7 @@ const Header = () => {
         buttonRef.removeEventListener("mouseleave", onMenuLeave);
       }
     };
-  }, []);
+  });
 
   return (
     <header className="flex  justify-between  bg-[#1b1b1b] shadow-header min-w-[420px] sm:py-2">
@@ -104,16 +104,17 @@ const Header = () => {
               </span>
             </Link>
           </li>
+
           {user && user.user ? (
             <>
-              <section ref={dropDownButtonRef} className="flex flex-col gap-2">
+              <div ref={dropDownButtonRef} className="flex ">
                 <button
                   id="dropdownDefaultButton"
                   data-dropdown-toggle="dropdown"
                   className="text-white  font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center relative"
                   type="button"
                 >
-                  {user.user?.displayName}
+                  {user.user.displayName}
                   <svg
                     className="w-4 h-4 ml-2"
                     aria-hidden="true"
@@ -157,7 +158,7 @@ const Header = () => {
                     </ul>
                   </div>
                 ) : null}
-              </section>
+              </div>
             </>
           ) : (
             <button
