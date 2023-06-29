@@ -30,5 +30,6 @@
   },
   "main": "index.js",
   "author": "Anuj kumar <trigbit.anuj@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "https://github.com/trigbitAnuj/hotspot.git"
 }
