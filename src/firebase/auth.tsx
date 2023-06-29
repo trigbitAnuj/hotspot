@@ -1,11 +1,11 @@
 "use client";
 
+// import { User } from "@/utils";
 import { initializeApp } from "firebase/app";
 import {
   AuthErrorCodes,
   GoogleAuthProvider,
   User,
-  UserCredential,
   getAuth,
   onAuthStateChanged,
   signInWithPopup,
@@ -14,6 +14,8 @@ import {
 import { useRouter } from "next/navigation";
 
 import { createContext, useContext, useEffect, useState } from "react";
+
+export interface UserType extends User {}
 
 interface ContextProps {
   signInWithGoogle: () => Promise<any>;
@@ -50,30 +52,31 @@ export const useAuth = () => useContext(AuthContext);
 export const UseAuthProvider = () => {
   const [user, setUser] = useState<User | null>(null);
 
-  const signInWithGoogle = async (): Promise<any> => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
-      localStorage.setItem("user", JSON.stringify(result));
-    } catch (e) {
-      if (e instanceof Error) {
-        if (e.message.includes(AuthErrorCodes.POPUP_CLOSED_BY_USER)) {
-          throw new Error("Pop up closed BY user");
-        } else if (e.message.includes(AuthErrorCodes.TIMEOUT)) {
-          throw new Error("The operation has timed out.");
-        } else if (e.message.includes(AuthErrorCodes.USER_CANCELLED)) {
-          throw new Error(
-            "The user did not grant your application the permissions it requested."
-          );
-        } else if (e.message.includes(AuthErrorCodes.POPUP_BLOCKED)) {
-          throw new Error(
-            "Unable to establish a connection with the popup. It may have been blocked by the browser."
-          );
-        } else {
-          throw new Error("something went wrong");
+  const signInWithGoogle = async () => {
+    const result = await signInWithPopup(auth, provider)
+      .then((result) => {
+        setUser(result.user);
+        localStorage.setItem("user", JSON.stringify(result));
+      })
+      .catch((e) => {
+        if (e instanceof Error) {
+          if (e.message.includes(AuthErrorCodes.POPUP_CLOSED_BY_USER)) {
+            throw new Error("Pop up closed BY user");
+          } else if (e.message.includes(AuthErrorCodes.TIMEOUT)) {
+            throw new Error("The operation has timed out.");
+          } else if (e.message.includes(AuthErrorCodes.USER_CANCELLED)) {
+            throw new Error(
+              "The user did not grant your application the permissions it requested."
+            );
+          } else if (e.message.includes(AuthErrorCodes.POPUP_BLOCKED)) {
+            throw new Error(
+              "Unable to establish a connection with the popup. It may have been blocked by the browser."
+            );
+          } else {
+            throw new Error("something went wrong");
+          }
         }
-      }
-    }
+      });
   };
   const signOutUser = () => {
     const result = signOut(auth)
@@ -98,6 +101,5 @@ export const UseAuthProvider = () => {
       unsubscribe();
     };
   });
-
   return { user, signInWithGoogle, signOutUser };
 };
