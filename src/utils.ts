@@ -1,5 +1,10 @@
 import { CartItem } from "@/GlobalRedux/features";
-import { User } from "firebase/auth";
+type User = {
+  user: {
+    displayName: string;
+    email: string;
+  };
+};
 
 export function getcartItems(cartItems: CartItem[]) {
   return cartItems.reduce((count, cartItem) => {
@@ -16,11 +21,4 @@ export const getSubTotal = (cart: CartItem[]) => {
 export const getUserfromLocalStorage = () => {
   const user: User = JSON.parse(localStorage.getItem("user") ?? "{}");
   return user;
-};
-
-export const login = () => {
-  console.log("user logged in");
-};
-export const logout = () => {
-  console.log("user logged out");
 };
