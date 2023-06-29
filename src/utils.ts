@@ -19,6 +19,6 @@ export const getSubTotal = (cart: CartItem[]) => {
 };
 
 export const getUserfromLocalStorage = () => {
-  const user: User = JSON.parse(localStorage.getItem("user") ?? "{}");
+  const user: User = JSON.parse(localStorage.getItem("user") || "{}");
   return user;
 };
