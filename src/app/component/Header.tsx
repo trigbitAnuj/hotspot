@@ -6,7 +6,7 @@ import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { RootState } from "../../GlobalRedux/store";
 import { useSelector } from "react-redux";
-import { getUserfromLocalStorage, getcartItems } from "@/utils";
+import { GetUserfromLocalStorage, getcartItems } from "@/utils";
 import { useRouter } from "next/navigation";
 import { UseAuthProvider } from "@/firebase/auth";
 
@@ -25,7 +25,7 @@ const Title: React.FC = () => {
 };
 
 const Header = () => {
-  const user = getUserfromLocalStorage();
+  const user = GetUserfromLocalStorage();
   const { signOutUser } = UseAuthProvider();
   const router = useRouter();
   const cartItems = useSelector((state: RootState) => state.cart.value);
@@ -161,12 +161,14 @@ const Header = () => {
               </div>
             </>
           ) : (
-            <button
-              onClick={login}
-              className="md:px-3 md:py-2 md:text-base border lg:px-3 lg:py-2 lg:text-lg border-red-500   rounded-md shadow-md shadow-red-500/20 hover:bg-red-600 sm:px-2 sm:py-2 sm:text-sm xs:px-1 xs:py-1 xs:text-xs "
-            >
-              Login
-            </button>
+            <div>
+              <button
+                onClick={login}
+                className="md:px-3 md:py-2 md:text-base border lg:px-3 lg:py-2 lg:text-lg border-red-500   rounded-md shadow-md shadow-red-500/20 hover:bg-red-600 sm:px-2 sm:py-2 sm:text-sm xs:px-1 xs:py-1 xs:text-xs "
+              >
+                Login
+              </button>
+            </div>
           )}
         </ul>
       </section>
