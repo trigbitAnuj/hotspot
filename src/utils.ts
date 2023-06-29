@@ -1,6 +1,6 @@
 import { CartItem } from "@/GlobalRedux/features";
 import { UserType } from "./firebase/auth";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface User {
   user: {
@@ -21,9 +21,15 @@ export const getSubTotal = (cart: CartItem[]) => {
   }, 0);
 };
 
-export const getUserfromLocalStorage = () => {
-  if (typeof window !== "undefined") {
-    const user: User = JSON.parse(localStorage.getItem("user") || "{}");
-    return user;
-  }
+export const GetUserfromLocalStorage = () => {
+  const [user, setUser] = useState<User | null>(null);
+  // if (typeof window !== "undefined") {
+  //   const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+  //   return user;
+  // }
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "{}");
+    setUser(user);
+  }, []);
+  return user;
 };
