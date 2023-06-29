@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import React from "react";
 // import "../app/globals.css";
 
@@ -5,13 +6,12 @@ type ErrorType = {
   error: Error;
 };
 const ErrorComponent: React.FC<ErrorType> = ({ error }) => {
+  const router = useRouter();
   return (
-    <div className="flex items-center justify-center px-2 md:px-0">
+    <div className="flex items-center justify-center px-2 md:px-0 mt-5">
       <div>
-        <p className="text-sm font-semibold text-black">{error.message}</p>
-        <h1 className="mt-3 text-2xl font-semibold text-gray-800 md:text-3xl">
-          We can&#x27;t find that page
-        </h1>
+        <h1 className="text-sm font-semibold text-black">{error.message}</h1>
+
         <p className="mt-4 text-gray-500">
           Sorry, the page you are looking for doesn&#x27;t exist or has been
           moved.
@@ -19,6 +19,7 @@ const ErrorComponent: React.FC<ErrorType> = ({ error }) => {
         <div className="mt-6 flex items-center space-x-3">
           <button
             type="button"
+            onClick={() => router.replace("/")}
             className="inline-flex items-center rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
             <svg
