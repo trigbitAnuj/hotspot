@@ -20,14 +20,15 @@ export const getSubTotal = (cart: CartItem[]) => {
 };
 
 export const GetUserfromLocalStorage = () => {
-  const [user, setUser] = useState<User | null>(null);
-  // if (typeof window !== "undefined") {
-  //   const user: User = JSON.parse(localStorage.getItem("user") || "{}");
-  //   return user;
-  // }
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-    setUser(user);
-  }, []);
-  return user;
+  // const [user, setUser] = useState<User | null>(null);
+  if (typeof window !== "undefined") {
+    const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+    console.log(user);
+    return user;
+  }
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user") || "{}");
+  //   setUser(user);
+  // }, []);
+  // return user;
 };
