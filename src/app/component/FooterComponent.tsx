@@ -3,10 +3,10 @@ import React from "react";
 
 const FooterComponent = () => {
   return (
-    <section className=" overflow-hidden bg-white text-gray-600  min-w-[420px]  border-t-2 border-slate-700">
+    <section className=" overflow-hidden bg-white text-gray-600  min-w-[420px]  border-t-2 border-slate-700 ">
       <div className="container  mx-auto px-2">
         <div className=" flex items-center justify-between md:flex-col">
-          <div className="w-auto  md:hidden ">
+          <div className="w-auto  mt-3 md:hidden ">
             <a href="#" className="flex">
               <Image src={"/logo.png"} alt="logo_img" width={50} height={50} />
               <div className="inline-flex items-center">
