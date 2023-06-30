@@ -3,10 +3,10 @@ import React from "react";
 
 const FooterComponent = () => {
   return (
-    <section className=" overflow-hidden bg-white text-gray-600  min-w-[400px]  border-t-2 border-slate-700">
+    <section className=" overflow-hidden bg-white text-gray-600  min-w-[420px]  border-t-2 border-slate-700">
       <div className="container  mx-auto px-2">
         <div className=" flex items-center justify-between md:flex-col">
-          <div className="w-auto p-5 ">
+          <div className="w-auto  md:hidden ">
             <a href="#" className="flex">
               <Image src={"/logo.png"} alt="logo_img" width={50} height={50} />
               <div className="inline-flex items-center">
@@ -14,35 +14,35 @@ const FooterComponent = () => {
               </div>
             </a>
           </div>
-          <div className="w-auto p-2 ">
+          <div className="w-auto  ">
             <ul className=" flex  items-center">
-              <li className="p-2">
+              <li className="p-2 sm:ml-1 sm:p-1">
                 <a
-                  className="font-medium text-gray-600 hover:text-gray-700"
+                  className="font-medium sm:text-xs text-gray-600 hover:text-gray-700"
                   href="#"
                 >
                   Privacy Policy
                 </a>
               </li>
-              <li className="p-2">
+              <li className="p-2 sm:ml-1 sm:p-1">
                 <a
-                  className="font-medium text-gray-600 hover:text-gray-700"
+                  className="font-medium sm:text-xs text-gray-600 hover:text-gray-700"
                   href="#"
                 >
                   Terms of Service
                 </a>
               </li>
-              <li className="p-2">
+              <li className="p-2 sm:ml-1 sm:p-1">
                 <a
-                  className="font-medium text-gray-600 hover:text-gray-700"
+                  className="font-medium sm:text-xs text-gray-600 hover:text-gray-700"
                   href="#"
                 >
                   Return Policy
                 </a>
               </li>
-              <li className="p-5">
+              <li className="p-2 sm:ml-1 sm:p-1 ">
                 <a
-                  className="font-medium text-gray-600 hover:text-gray-700"
+                  className="font-medium sm:text-xs text-gray-600 hover:text-gray-700"
                   href="#"
                 >
                   Contact Us
@@ -50,7 +50,7 @@ const FooterComponent = () => {
               </li>
             </ul>
           </div>
-          <div className="w-auto p-5">
+          <div className="w-auto">
             <div className=" flex ">
               <div className="w-auto p-1.5">
                 <a href="#">
