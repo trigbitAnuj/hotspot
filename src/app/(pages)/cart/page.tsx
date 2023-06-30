@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const Cart: NextPage = () => {
   return (
     <CheckUserLogInProvider>
-      <CartComponent />;
+      <CartComponent />
     </CheckUserLogInProvider>
   );
 };
