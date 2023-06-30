@@ -3,10 +3,8 @@ import { UserType } from "./firebase/auth";
 import { useEffect, useState } from "react";
 
 interface User {
-  user: {
-    displayName: string | null;
-    email: string;
-  };
+  displayName: string | null;
+  email: string;
 }
 
 export function getcartItems(cartItems: CartItem[]) {
