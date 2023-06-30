@@ -42,11 +42,16 @@ module.exports = {
       },
       animation: {
         "animate-ltr": "animate 3s ease-out infinite ",
+        "transition-width": "width 0.5s ease-in-out ",
       },
       keyframes: {
         animate: {
           "0%": { backgroundPosition: "-1000px 0" },
           "100%": { backgroundPosition: "1000px 0" },
+        },
+        width: {
+          "0%": { width: "0px" },
+          "100%": { width: "100%" },
         },
       },
     },

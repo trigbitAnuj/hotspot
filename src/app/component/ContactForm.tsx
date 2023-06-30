@@ -58,8 +58,8 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="flex justify-center mt-4 gap-2 min-w-[50px] ">
-      <section className="left md:hidden">
+    <section className="flex justify-center mt-4 gap-2 min-w-[420px] min-h-screen ">
+      <section className="left md:hidden lg:ml-8">
         <Image
           src={"/Contact-Us.png"}
           alt="contact-img"
@@ -76,7 +76,7 @@ const ContactForm = () => {
         </h1>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-2  items-center p-3 w-[60vw] min-w-[400px] "
+          className="flex flex-col gap-2  items-center p-3 w-[50vw] min-w-[400px] "
         >
           <input
             required
@@ -86,17 +86,17 @@ const ContactForm = () => {
             id="FullName"
             value={user.fullName}
             onChange={handleChange}
-            className="border border-[#98a7ff] p-2 m-2 w-[30vw] md:w-[50vw]  rounded-md shadow-md shadow-[#98a7ff]/50 xs:w-[80vw]"
+            className="border border-[#98a7ff] p-2 m-2 w-[30vw] md:w-[50vw]  rounded-md shadow-md shadow-[#98a7ff]/50 "
           />
-
           <input
             required
-            type="email"
-            name="email"
+            type="text"
+            name="Email"
+            placeholder="Enter Email"
+            id="Email"
             value={user.email}
             onChange={handleChange}
-            placeholder=" Enter email"
-            className="border border-[#98a7ff] p-2 m-2 w-[30vw] md:w-[50vw]  rounded-md shadow-md shadow-[#98a7ff]/50 xs:w-[80vw]"
+            className="border border-[#98a7ff] p-2 m-2 w-[30vw] md:w-[50vw]  rounded-md shadow-md shadow-[#98a7ff]/50 "
           />
 
           <textarea
@@ -108,7 +108,7 @@ const ContactForm = () => {
             value={user.message}
             onChange={handleChange}
             placeholder="Enter message"
-            className="border border-[#98a7ff] p-2  m-2 w-[30vw] md:w-[50vw]   rounded-sm shadow-md shadow-[#98a7ff]/50 xs:w-[80vw]"
+            className="border border-[#98a7ff] p-2  m-2 w-[30vw] md:w-[50vw]   rounded-sm shadow-md shadow-[#98a7ff]/50 xs:w-[60vw]"
           />
           {status && status === "success" && (
             <p>Thank you for Submitting your message</p>

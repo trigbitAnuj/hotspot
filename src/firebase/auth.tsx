@@ -6,6 +6,7 @@ import {
   AuthErrorCodes,
   GoogleAuthProvider,
   User,
+  UserCredential,
   getAuth,
   onAuthStateChanged,
   signInWithPopup,
@@ -50,7 +51,7 @@ export const useAuth = () => useContext(AuthContext);
 //
 
 export const UseAuthProvider = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<UserType | null>(null);
 
   const signInWithGoogle = async () => {
     const result = await signInWithPopup(auth, provider)
@@ -93,9 +94,12 @@ export const UseAuthProvider = () => {
   useEffect(() => {
     const unsubscribe = () => {
       onAuthStateChanged(auth, (user) => {
-        user ? setUser(user) : setUser(null);
+        user
+          ? localStorage.setItem("user", JSON.stringify(user))
+          : localStorage.removeItem("user");
       });
     };
+    console.log(user?.displayName);
 
     return () => {
       unsubscribe();
