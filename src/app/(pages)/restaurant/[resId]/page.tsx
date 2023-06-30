@@ -37,7 +37,7 @@ const Page = ({ params }: Props) => {
   const dispatch = useDispatch();
 
   const { data, loading, error } = UseFetch(resId);
-  console.log(data);
+
   const handleAddToCart = (item: CardType) => {
     dispatch(addToCart({ item, quantity: 1 }));
   };
@@ -45,8 +45,6 @@ const Page = ({ params }: Props) => {
   return (
     <>
       <section className={montserrat.className}>
-        <section></section>
-
         <section className="flex justify-center pb-4 ">
           <ul className="w-[700px]">
             <h1 className="text-center">{data ? "Menu" : null}</h1>
