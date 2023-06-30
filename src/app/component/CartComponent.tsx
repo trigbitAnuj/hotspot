@@ -110,7 +110,7 @@ const CartComponent: React.FC = () => {
                 height={150}
               />
               <h1 className="text-3xl text-center">
-                Make me happy by Adding Item to cart
+                Make me happy by adding item to cart
               </h1>
               <Link
                 href="/"
