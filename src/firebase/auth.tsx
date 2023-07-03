@@ -49,6 +49,7 @@ export const UseAuthProvider = () => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         updateProfile(user, { displayName });
+        console.log(user);
       })
       .catch((e) => {
         if (e instanceof Error) {
@@ -70,7 +71,7 @@ export const UseAuthProvider = () => {
 
         localStorage.setItem(
           "user",
-          JSON.stringify({ displayName: user.displayName })
+          JSON.stringify({ displayName: user.displayName, email: user.email })
         );
       })
       .catch((e) => {
@@ -98,7 +99,7 @@ export const UseAuthProvider = () => {
         setUser(user);
         localStorage.setItem(
           "user",
-          JSON.stringify({ dispalyName: user.displayName })
+          JSON.stringify({ displayName: user.displayName, email: user.email })
         );
       })
       .catch((e) => {
@@ -136,7 +137,7 @@ export const UseAuthProvider = () => {
   useEffect(() => {
     const unsubscribe = () => {
       onAuthStateChanged(auth, (user) => {
-        user ? router.push("/") : router.push("/login");
+        user ? setUser(user) : setUser(null);
       });
     };
 
