@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { UseAuthProvider } from "@/firebase/auth";
-import ErrorComponent from "@/app/component/Error";
+import ErrorComponent from "../../../components/Error";
 
 const SignUp = () => {
   const router = useRouter();
@@ -38,11 +38,11 @@ const SignUp = () => {
         <FaLock style={{ fontSize: "40px" }} />
       </div>
 
-      <section className=" grid w-2/5 min-w-[400px] ">
+      <section className=" grid w-2/5  xs:justify-center    ">
         <form
           action=""
           onSubmit={(e) => handleSignup(e)}
-          className="grid gap-2 min-w-[400px]"
+          className="grid gap-2 "
         >
           <label htmlFor="email" className="font-semibold">
             Username
