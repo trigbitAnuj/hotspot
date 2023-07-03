@@ -1,21 +1,32 @@
 "use client";
 import Link from "next/link";
 import React from "react";
+import { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { UseAuthProvider } from "@/firebase/auth";
 
-type ValuesTypes = {
-  email: string;
-  password: string;
-};
 const SignUp = () => {
   const router = useRouter();
+  const { signUp } = UseAuthProvider();
+  const [error, setError] = useState<Error | null>(null);
 
-  const handlelogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // const formData = new FormData(e.currentTarget);
-    router.push("/login");
+    const formData = new FormData(e.currentTarget);
+    const displayName = formData.get("username") as string;
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    try {
+      await signUp(email, password, displayName);
+      router.push("/login");
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e);
+      }
+    }
   };
+
   return (
     <section className=" flex justify-center items-center flex-col  mt-5 min-w-[400px]">
       <h1 className="font-bold text-3xl mb-2">Signup</h1>
@@ -26,7 +37,7 @@ const SignUp = () => {
       <section className=" grid w-2/5 min-w-[400px] ">
         <form
           action=""
-          onSubmit={(e) => handlelogin(e)}
+          onSubmit={(e) => handleSignup(e)}
           className="grid gap-2 min-w-[400px]"
         >
           <label htmlFor="email" className="font-semibold">
@@ -35,7 +46,7 @@ const SignUp = () => {
           <input
             className="p-2 border border-gray-600 rounded"
             type="text"
-            name="text"
+            name="username"
             id="text"
             placeholder="Enter Username"
             autoComplete="off"
