@@ -1,8 +1,6 @@
-import { Providers } from "@/GlobalRedux";
 import { CheckUserLogInProvider } from "@/GlobalRedux/Providers";
-import CartComponent from "@/app/component/CartComponent";
+import CartComponent from "@/components/CartComponent";
 import { Metadata, NextPage } from "next";
-import { Roboto_Mono } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Cart",
