@@ -5,6 +5,7 @@ import { useState } from "react";
 import { FaLock } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { UseAuthProvider } from "@/firebase/auth";
+import ErrorComponent from "@/app/component/Error";
 
 const SignUp = () => {
   const router = useRouter();
@@ -26,6 +27,9 @@ const SignUp = () => {
       }
     }
   };
+  if (error) {
+    return <ErrorComponent error={error} />;
+  }
 
   return (
     <section className=" flex justify-center items-center flex-col  mt-5 min-w-[400px]">
