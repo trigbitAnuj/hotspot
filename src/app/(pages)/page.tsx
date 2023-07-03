@@ -2,11 +2,11 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { SWIGGY_API_URL } from "../../constants";
-import Shimmer from "@/app/component/Shimmer";
-import RestaurantCard from "@/app/component/RestaurantCard";
-import ErrorComponent from "@/app/component/Error";
-import CrousalComponent from "../component/CrousalComponent";
+import { SWIGGY_API_URL } from "@/constants";
+import Shimmer from "@/components/Shimmer";
+import RestaurantCard from "@/components/RestaurantCard";
+import ErrorComponent from "@/components/Error";
+import CrousalComponent from "@/components/CrousalComponent";
 
 export type restaurantType = {
   type: string;
@@ -81,7 +81,7 @@ const Home: NextPage = () => {
         throw new Error("Internal Server Error");
       }
       const data = await res.json();
-      console.log(data);
+
       setRestaurants(data.data.cards[2]["data"]["data"]["cards"]);
       setFilteredRestaurants(data.data.cards[2]["data"]["data"]["cards"]);
       setCrousalData(data.data.cards[0].data.data.cards);
