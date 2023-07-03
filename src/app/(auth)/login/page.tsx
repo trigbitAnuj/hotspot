@@ -11,12 +11,21 @@ import ErrorComponent from "@/app/component/Error";
 
 const Login: NextPage = () => {
   const router = useRouter();
-  const { signInWithGoogle } = UseAuthProvider();
+  const { signInWithGoogle, signIn } = UseAuthProvider();
   const [error, setError] = useState<Error | null>(null);
 
-  const handlelogin = (e: React.FormEvent<HTMLFormElement>) => {
+  const handlelogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push("/");
+    const formData = new FormData(e.currentTarget);
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    try {
+      await signIn(email, password);
+    } catch (e) {
+      if (e instanceof Error) {
+        setError(e);
+      }
+    }
   };
 
   const handleSigninWithGoogle = async () => {

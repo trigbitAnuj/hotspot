@@ -19,7 +19,7 @@ const ProfileComponent = () => {
 
   const handleSignOut = async () => {
     await signOutUser();
-    router.push("/login");
+    // router.push("/login");
   };
 
   const onMenuEnter = () => {
@@ -59,7 +59,7 @@ const ProfileComponent = () => {
             className="text-white  font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center relative"
             type="button"
           >
-            {user?.displayName}
+            {user.displayName ?? user.email}
             <svg
               className="w-4 h-4 ml-2"
               aria-hidden="true"

@@ -68,7 +68,6 @@ const Header: React.FC = () => {
     await signOutUser();
     router.push("/login");
   };
-  console.log(user);
 
   return (
     <>
