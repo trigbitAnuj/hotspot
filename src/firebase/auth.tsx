@@ -6,22 +6,19 @@ import {
   AuthErrorCodes,
   GoogleAuthProvider,
   User,
-  UserCredential,
+  createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 export interface UserType extends User {}
-
-interface ContextProps {
-  signInWithGoogle: () => Promise<any>;
-  signOutUser: () => Promise<any>;
-}
 
 const firebaseConfig = {
   apiKey: "AIzaSyB55r468rIdrYgnwpK9hMqM7qoXE5Faq4I",
@@ -39,25 +36,66 @@ const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
 
-export const AuthContext = createContext<ContextProps>({} as ContextProps);
-
-// export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-//   const auth = UseAuthProvider();
-//   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
-// };
-
-export const useAuth = () => useContext(AuthContext);
-
-//
-
 export const UseAuthProvider = () => {
+  const router = useRouter();
   const [user, setUser] = useState<UserType | null>(null);
 
+  const signUp = async (email: string, password: string, displayName: string) =>
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        console.log(displayName);
+        updateProfile(user, { displayName });
+        console.log(user);
+      })
+      .catch((e) => {
+        if (e instanceof Error) {
+          if (e.message.includes(AuthErrorCodes.EMAIL_EXISTS)) {
+            throw new Error(
+              "The email address is already in use by another account"
+            );
+          } else {
+            throw new Error("something went wrong");
+          }
+        }
+      });
+
+  const signIn = async (email: string, password: string) => {
+    await signInWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        setUser(user);
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ displayName: user.displayName })
+        );
+      })
+      .catch((e) => {
+        const error = e;
+        console.log(error);
+        if (e instanceof Error) {
+          if (e.message.includes(AuthErrorCodes.INVALID_PASSWORD)) {
+            throw new Error(
+              "The password is invalid or the user does not have a password."
+            );
+          } else if (e.message.includes(AuthErrorCodes.TIMEOUT)) {
+            throw new Error("The operation has timed out.");
+          } else if (e.message.includes(AuthErrorCodes.INVALID_EMAIL)) {
+            throw new Error("The email address is badly formatted.");
+          } else if (e.message === "auth/user-not-found") {
+            throw new Error("user not found");
+          }
+        }
+      });
+  };
+
   const signInWithGoogle = async () => {
-    const result = await signInWithPopup(auth, provider)
-      .then((result) => {
-        setUser(result.user);
-        localStorage.setItem("user", JSON.stringify(result));
+    await signInWithPopup(auth, provider)
+      .then(({ user }) => {
+        setUser(user);
+        localStorage.setItem(
+          "user",
+          JSON.stringify({ dispalyName: user.displayName })
+        );
       })
       .catch((e) => {
         if (e instanceof Error) {
@@ -94,16 +132,19 @@ export const UseAuthProvider = () => {
   useEffect(() => {
     const unsubscribe = () => {
       onAuthStateChanged(auth, (user) => {
-        user
-          ? localStorage.setItem("user", JSON.stringify(user))
-          : localStorage.removeItem("user");
+        user ? router.push("/") : router.push("/login");
       });
     };
-    console.log(user?.displayName);
 
     return () => {
       unsubscribe();
     };
   });
-  return { user, signInWithGoogle, signOutUser };
+  return {
+    user,
+    signUp,
+    signIn,
+    signInWithGoogle,
+    signOutUser,
+  };
 };
