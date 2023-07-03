@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const FooterComponent = () => {
+const FooterComponent: React.FC = () => {
   return (
     <section className=" overflow-hidden bg-white text-gray-600  min-w-[420px]  border-t-2 border-slate-700 ">
       <div className="container  mx-auto px-2">

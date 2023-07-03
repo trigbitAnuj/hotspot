@@ -1,10 +1,10 @@
 "use client";
 import { Provider } from "react-redux";
 import { store } from "@/GlobalRedux/store";
-import Header from "../app/component/Header";
+import Header from "@/components/Header";
 import { QueryClientProvider, QueryClient } from "react-query";
-import FooterComponent from "@/app/component/FooterComponent";
-import { UseAuthProvider } from "@/firebase/auth";
+import FooterComponent from "@/components/FooterComponent";
+
 import Login from "@/app/(auth)/login/page";
 import { useRouter } from "next/navigation";
 import { GetUserfromLocalStorage } from "@/utils";
@@ -14,7 +14,7 @@ export const CheckUserLogInProvider: React.FC<React.PropsWithChildren> = ({
 }) => {
   const router = useRouter();
   const user = GetUserfromLocalStorage();
-  if (!user) {
+  if (!user?.email) {
     return <Login />;
   } else {
     return children;

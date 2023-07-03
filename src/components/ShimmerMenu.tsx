@@ -1,5 +1,4 @@
 import React from "react";
-// import "../app/globals.css";
 
 const ShimmerMenu: React.FC = () => {
   return (

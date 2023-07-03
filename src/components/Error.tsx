@@ -1,6 +1,5 @@
 import { useRouter } from "next/navigation";
 import React from "react";
-// import "../app/globals.css";
 
 type ErrorType = {
   error: Error;

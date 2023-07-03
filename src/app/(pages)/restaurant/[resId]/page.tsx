@@ -1,13 +1,13 @@
 "use client";
 import React from "react";
-import { ITEM_IMG_CDN_URL } from "../../../../constants";
+import { ITEM_IMG_CDN_URL } from "@/constants";
 import Image from "next/image";
 import UseFetch from "@/Hooks/UseRestaurant";
 import { Montserrat } from "next/font/google";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/GlobalRedux/features/cart-slice";
-import ShimmerMenu from "@/app/component/ShimmerMenu";
-import ErrorComponent from "@/app/component/Error";
+import ShimmerMenu from "@/components/ShimmerMenu";
+import ErrorComponent from "@/components/Error";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

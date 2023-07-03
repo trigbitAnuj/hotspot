@@ -4,7 +4,7 @@ import { GetUserfromLocalStorage } from "@/utils";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 
-const ProfileComponent = () => {
+const ProfileComponent: React.FC = () => {
   const user = GetUserfromLocalStorage();
   const { signOutUser } = UseAuthProvider();
   const router = useRouter();
@@ -19,7 +19,7 @@ const ProfileComponent = () => {
 
   const handleSignOut = async () => {
     await signOutUser();
-    // router.push("/login");
+    router.push("/login");
   };
 
   const onMenuEnter = () => {
@@ -51,7 +51,7 @@ const ProfileComponent = () => {
 
   return (
     <>
-      {user && user.displayName ? (
+      {user && user.email ? (
         <div ref={dropDownDivRef} className="flex ">
           <button
             id="dropdownDefaultButton"

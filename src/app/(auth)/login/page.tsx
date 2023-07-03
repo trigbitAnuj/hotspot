@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { NextPage } from "next";
 import { UseAuthProvider } from "@/firebase/auth";
 
-import ErrorComponent from "@/app/component/Error";
+import ErrorComponent from "../../../components/Error";
 
 const Login: NextPage = () => {
   const router = useRouter();
@@ -21,6 +21,7 @@ const Login: NextPage = () => {
     const password = formData.get("password") as string;
     try {
       await signIn(email, password);
+      router.push("/");
     } catch (e) {
       if (e instanceof Error) {
         setError(e);
@@ -50,17 +51,13 @@ const Login: NextPage = () => {
         <FaLock style={{ fontSize: "40px" }} />
       </div>
 
-      <section className=" grid w-2/5 min-w-[400px] ">
-        <form
-          action=""
-          onSubmit={handlelogin}
-          className="grid gap-2  min-w-[400px]"
-        >
+      <section className=" grid w-2/5 xs:justify-center   ">
+        <form action="" onSubmit={handlelogin} className="grid gap-2  ">
           <label htmlFor="email" className="font-semibold">
             Email
           </label>
           <input
-            className="p-2 border border-gray-600 rounded"
+            className="p-2 border border-gray-600 rounded "
             type="email"
             name="email"
             id="email"
@@ -71,7 +68,7 @@ const Login: NextPage = () => {
 
           <label htmlFor="password">Password</label>
           <input
-            className="p-2 border border-gray-600 rounded "
+            className="p-2 border border-gray-600 rounded  "
             type="password"
             name="password"
             id="password"
@@ -80,23 +77,23 @@ const Login: NextPage = () => {
             required
           />
           <button
-            className="p-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md mt-2"
+            className="p-2 text-white bg-blue-500 hover:bg-blue-600 rounded-md mt-2 "
             type="submit"
           >
             LOGIN
           </button>
         </form>
-        <section className="grid grid-cols-3 text-gray-500 mt-5 items-center  ">
+        <section className="grid grid-cols-3 text-gray-500 mt-5 items-center  xs:w-[70vw] xs:justify-center ">
           <hr className="border-gray-500 " />
           <p className="text-center text-sm">OR</p>
           <hr className="border-gray-500" />
         </section>
 
         <button
-          className="py-2  bg-white my-5  text-[#002D74] w-full rounded-xl border"
+          className="py-2  bg-white my-5  text-[#002D74] lg:w-full rounded-xl border xs:w-[70vw]"
           onClick={handleSigninWithGoogle}
         >
-          <section className="flex justify-center items-center text-sm  ">
+          <section className="flex justify-center items-center text-sm  xs:  ">
             <svg
               className="mr-3"
               xmlns="http://www.w3.org/2000/svg"

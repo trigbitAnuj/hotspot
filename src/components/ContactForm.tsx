@@ -9,7 +9,7 @@ type UserType = {
   message: string;
 };
 
-const ContactForm = () => {
+const ContactForm: React.FC = () => {
   const [user, setUser] = React.useState<UserType>({
     fullName: "",
     email: "",

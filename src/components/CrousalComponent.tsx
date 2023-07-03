@@ -1,7 +1,7 @@
 import React from "react";
-import { CrousalType } from "../(pages)/page";
+import { CrousalType } from "../app/(pages)/page";
 
-import { CROUSAL_CDN_URL } from "../../constants";
+import { CROUSAL_CDN_URL } from "../constants";
 import Image from "next/image";
 type PropsType = {
   data: CrousalType[];

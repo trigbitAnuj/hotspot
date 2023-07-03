@@ -3,7 +3,7 @@ import React from "react";
 import { RootState } from "@/GlobalRedux/store";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-import { ITEM_IMG_CDN_URL } from "../../constants";
+import { ITEM_IMG_CDN_URL } from "../constants";
 import Link from "next/link";
 import {
   CartItem,
@@ -12,7 +12,7 @@ import {
   removeFromCart,
 } from "@/GlobalRedux/features/cart-slice";
 import { useDispatch } from "react-redux";
-import { getSubTotal } from "../../utils";
+import { getSubTotal } from "../utils";
 import { Roboto_Mono } from "next/font/google";
 
 const roboto = Roboto_Mono({

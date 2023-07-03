@@ -1,5 +1,4 @@
 import React from "react";
-// import "../app/globals.css";
 const Shimmer: React.FC = () => {
   return (
     <section className="flex justify-center gap-4 flex-wrap">

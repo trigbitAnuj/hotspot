@@ -5,7 +5,7 @@ import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { FaShoppingCart, FaHamburger } from "react-icons/fa";
 import { MdCancel } from "react-icons/md";
-import { RootState } from "../../GlobalRedux/store";
+import { RootState } from "../GlobalRedux/store";
 import { useSelector } from "react-redux";
 import { GetUserfromLocalStorage, getcartItems } from "@/utils";
 import { useRouter } from "next/navigation";
@@ -32,14 +32,8 @@ const Header: React.FC = () => {
   const router = useRouter();
   const cartItems = useSelector((state: RootState) => state.cart.value);
   const cartItemsLength = getcartItems(cartItems);
-  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
-  const dropDownDivRef = useRef<HTMLDivElement | null>(null);
-  const timerId = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const handleLogin = () => {
-    router.push("/login");
-  };
   const handleCart = () => {
     router.push("/cart");
     setShowMenu(false);
