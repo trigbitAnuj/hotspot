@@ -6,6 +6,7 @@ import {
   AuthErrorCodes,
   GoogleAuthProvider,
   User,
+  UserCredential,
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
@@ -40,12 +41,14 @@ export const UseAuthProvider = () => {
   const router = useRouter();
   const [user, setUser] = useState<UserType | null>(null);
 
-  const signUp = async (email: string, password: string, displayName: string) =>
+  const signUp = async (
+    email: string,
+    password: string,
+    displayName: string
+  ) => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
-        console.log(displayName);
         updateProfile(user, { displayName });
-        console.log(user);
       })
       .catch((e) => {
         if (e instanceof Error) {
@@ -58,6 +61,7 @@ export const UseAuthProvider = () => {
           }
         }
       });
+  };
 
   const signIn = async (email: string, password: string) => {
     await signInWithEmailAndPassword(auth, email, password)
