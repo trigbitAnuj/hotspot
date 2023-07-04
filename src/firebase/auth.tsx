@@ -137,14 +137,14 @@ export const UseAuthProvider = () => {
   useEffect(() => {
     const unsubscribe = () => {
       onAuthStateChanged(auth, (user) => {
-        user ? setUser(user) : setUser(null);
+        user ? router.push("/") : router.push("/login");
       });
     };
 
     return () => {
       unsubscribe();
     };
-  });
+  }, [router]);
   return {
     user,
     signUp,
