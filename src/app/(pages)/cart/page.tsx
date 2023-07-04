@@ -8,9 +8,9 @@ export const metadata: Metadata = {
 
 const Cart: NextPage = () => {
   return (
-    <CheckUserLogInProvider>
-      <CartComponent />
-    </CheckUserLogInProvider>
+    // <CheckUserLogInProvider>
+    <CartComponent />
+    // </CheckUserLogInProvider>
   );
 };
 
