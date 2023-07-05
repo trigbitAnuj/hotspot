@@ -1,5 +1,5 @@
 "use client";
-// import "../app/globals.css";
+
 import React from "react";
 import Image from "next/image";
 
@@ -24,7 +24,7 @@ const ContactForm: React.FC = () => {
         method: "POST",
 
         body: JSON.stringify({
-          full: user.fullName,
+          fullName: user.fullName,
           email: user.email,
           message: user.message,
         }),
@@ -91,7 +91,7 @@ const ContactForm: React.FC = () => {
           <input
             required
             type="text"
-            name="Email"
+            name="email"
             placeholder="Enter Email"
             id="Email"
             value={user.email}

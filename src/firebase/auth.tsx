@@ -1,6 +1,5 @@
 "use client";
 
-// import { User } from "@/utils";
 import { initializeApp } from "firebase/app";
 import {
   AuthErrorCodes,
@@ -49,7 +48,6 @@ export const UseAuthProvider = () => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         updateProfile(user, { displayName });
-        console.log(user);
       })
       .catch((e) => {
         if (e instanceof Error) {
@@ -144,7 +142,7 @@ export const UseAuthProvider = () => {
     return () => {
       unsubscribe();
     };
-  }, [router]);
+  });
   return {
     user,
     signUp,

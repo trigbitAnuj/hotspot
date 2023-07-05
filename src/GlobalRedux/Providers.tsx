@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import { QueryClientProvider, QueryClient } from "react-query";
 import FooterComponent from "@/components/FooterComponent";
 
-import Login from "@/app/(auth)/login/page";
 import { useRouter } from "next/navigation";
 import { GetUserfromLocalStorage } from "@/utils";
 
@@ -14,10 +13,13 @@ export const CheckUserLogInProvider: React.FC<React.PropsWithChildren> = ({
 }) => {
   const router = useRouter();
   const user = GetUserfromLocalStorage();
-  if (!user?.email) {
-    return <Login />;
-  } else {
-    return children;
+  if (user) {
+    if (user.email) {
+      return children;
+    } else {
+      router.push("/login");
+      return <h1>Loading...</h1>;
+    }
   }
 };
 
