@@ -1,5 +1,7 @@
 import { Mulish } from "next/font/google";
 import "../../globals.css";
+import { CheckLogin } from "@/Helpers/CheckLogin";
+
 const mulish = Mulish({ subsets: ["latin"], weight: "600" });
 
 export const metadata = {
@@ -16,7 +18,9 @@ export default function LoginLayout({
 }) {
   return (
     <html lang="en">
-      <body className={mulish.className}>{children}</body>
+      <body className={mulish.className}>
+        <CheckLogin> {children}</CheckLogin>
+      </body>
     </html>
   );
 }
