@@ -65,7 +65,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="flex  justify-between  bg-[#1b1b1b] shadow-header min-w-[420px] sm:py-2 sm:hidden ">
+      <header className="flex  justify-between  bg-[#1b1b1b] shadow-header min-w-[420px] sm:py-2 sm:hidden  sticky top-0 z-20 ">
         <Title />
 
         <section className=" flex px-10 sm:hidden ">
