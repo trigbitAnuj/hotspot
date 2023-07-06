@@ -1,3 +1,4 @@
+import { CheckUserLogInProvider } from "@/Helpers/CheckUserLoginProvider";
 import CartComponent from "@/components/CartComponent";
 import { Metadata, NextPage } from "next";
 
@@ -6,7 +7,11 @@ export const metadata: Metadata = {
 };
 
 const Cart: NextPage = () => {
-  return <CartComponent />;
+  return (
+    // <CheckUserLogInProvider>
+    <CartComponent />
+    // </CheckUserLogInProvider>
+  );
 };
 
 export default Cart;
