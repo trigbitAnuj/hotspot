@@ -10,7 +10,7 @@ import CrousalComponent from "@/components/CrousalComponent";
 
 export type restaurantType = {
   type: string;
-  data: {
+  info: {
     id: string;
     name: string;
 
@@ -35,7 +35,6 @@ export type restaurantType = {
     address: string;
     locality: string;
     veg: boolean;
-    lastMileTravelString: string;
 
     sla: {
       restaurantId: string;
@@ -44,6 +43,7 @@ export type restaurantType = {
       maxDeliveryTime: number;
       lastMileTravel: number;
       lastMileDistance: number;
+      lastMileTravelString: string;
     };
 
     avgRating: string;
@@ -52,10 +52,10 @@ export type restaurantType = {
 };
 export type restaurantListType = Array<restaurantType>;
 export interface CrousalType {
-  data: {
-    creativeId: string;
-    bannerId: number;
-    title: string;
+  imageId: string;
+  id: string;
+  action: {
+    text: string;
   };
 }
 
@@ -82,9 +82,19 @@ const Home: NextPage = () => {
       }
       const data = await res.json();
 
-      setRestaurants(data.data.cards[2]["data"]["data"]["cards"]);
-      setFilteredRestaurants(data.data.cards[2]["data"]["data"]["cards"]);
-      setCrousalData(data.data.cards[0].data.data.cards);
+      setRestaurants(
+        data.data.cards[4]["card"]["card"]["gridElements"]["infoWithStyle"][
+          "restaurants"
+        ]
+      );
+      setFilteredRestaurants(
+        data.data.cards[4]["card"]["card"]["gridElements"]["infoWithStyle"][
+          "restaurants"
+        ]
+      );
+      setCrousalData(
+        data.data.cards[0].card.card["gridElements"]["infoWithStyle"].info
+      );
     } catch (error) {
       if (error instanceof Error) {
         setError(error);
@@ -102,7 +112,7 @@ const Home: NextPage = () => {
   ) => {
     if (searchText !== "") {
       const filterData: restaurantListType = restaurants.filter((restaurant) =>
-        restaurant.data.name.toLowerCase().includes(searchText.toLowerCase())
+        restaurant.info.name.toLowerCase().includes(searchText.toLowerCase())
       );
 
       setErrorMsg("");
@@ -124,7 +134,7 @@ const Home: NextPage = () => {
   }
 
   return (
-    <section className="min-w-[400px] min-h-screen">
+    <section className=" min-h-screen">
       <section className="flex justify-center items-center mt-9 mb-9    ">
         <input
           type="text"
@@ -142,17 +152,17 @@ const Home: NextPage = () => {
       </section>
       <CrousalComponent data={crousalData} />
       {errorMsg && <p className="text-center">{errorMsg}</p>}
-      {error && <ErrorComponent error={error} />}
+      {/* {error && <ErrorComponent error={error} />} */}
       {restaurants.length === 0 && !error ? (
         <Shimmer />
       ) : (
-        <section className="flex justify-center flex-wrap gap-5 min-w-[400px] ">
+        <section className="flex xs:justify-center lg:justify-start flex-wrap gap-5  mx-10 ">
           {filteredRestaurants.map((restaurant) => (
             <Link
-              href={`/restaurant/${restaurant.data.id}`}
-              key={restaurant.data.id}
+              href={`/restaurant/${restaurant.info.id}`}
+              key={restaurant.info.id}
             >
-              <RestaurantCard {...restaurant.data} />
+              <RestaurantCard {...(restaurant.info as any)} />
             </Link>
           ))}
         </section>

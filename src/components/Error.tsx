@@ -29,8 +29,8 @@ const ErrorComponent: React.FC<ErrorType> = ({ error }) => {
               fill="none"
               stroke="currentColor"
               stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="mr-2"
             >
               <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -38,11 +38,13 @@ const ErrorComponent: React.FC<ErrorType> = ({ error }) => {
             </svg>
             Go back
           </button>
+
           <button
+            onClick={() => router.refresh()}
             type="button"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
-            Contact us
+            Refresh
           </button>
         </div>
       </div>

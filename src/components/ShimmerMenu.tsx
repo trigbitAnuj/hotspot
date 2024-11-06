@@ -6,9 +6,9 @@ const ShimmerMenu: React.FC = () => {
       {new Array(5).fill(0).map((item, index) => (
         <section
           key={index.toString()}
-          className="flex justify-center items-center"
+          className="flex justify-center items-center "
         >
-          <section className=" w-[100%]  border-b-2  flex justify-between m-2  h-[150px]">
+          <section className=" w-[100%]  border-b-2  flex justify-between m-2  xs:flex-col lg:flex-row   ">
             <section className="left flex flex-col w-[100%]   p-2">
               <div className="title h-4 w-[30%]  m-1 bg-gray-400 rounded-md bg-gradient-ltr bg-x-y animate-animate-ltr"></div>
               <div className="price h-4 w-[20%]  m-1  bg-gray-400 rounded-md bg-gradient-ltr bg-x-y animate-animate-ltr"></div>

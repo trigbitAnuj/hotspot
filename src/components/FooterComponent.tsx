@@ -3,22 +3,22 @@ import React from "react";
 
 const FooterComponent: React.FC = () => {
   return (
-    <section className=" overflow-hidden bg-white text-gray-600  min-w-[420px]  border-t-2 border-slate-700 ">
-      <div className="container  mx-auto px-2">
-        <div className=" flex items-center justify-between md:flex-col">
-          <div className="w-auto  mt-3 md:hidden ">
+    <section className="  bg-white text-gray-600  xs:w-full max-h-[100px]  border-t-2 border-slate-700 ">
+      <div className="mx-auto px-2">
+        <div className=" flex items-center justify-between flex-col">
+          {/* <div className="w-auto  mt-3 md:hidden ">
             <a href="#" className="flex">
               <Image src={"/logo.png"} alt="logo_img" width={50} height={50} />
               <div className="inline-flex items-center">
                 <span className="ml-4 text-lg font-bold">HotSpot</span>
               </div>
             </a>
-          </div>
-          <div className="w-auto  ">
-            <ul className=" flex  items-center">
+          </div> */}
+          <div className="w-full">
+            <ul className=" flex  items-center justify-center">
               <li className="p-2 sm:ml-1 sm:p-1">
                 <a
-                  className="font-medium sm:text-xs text-gray-600 hover:text-gray-700"
+                  className="font-medium xs:text-xs text-gray-600 hover:text-gray-700"
                   href="#"
                 >
                   Privacy Policy
@@ -26,7 +26,7 @@ const FooterComponent: React.FC = () => {
               </li>
               <li className="p-2 sm:ml-1 sm:p-1">
                 <a
-                  className="font-medium sm:text-xs text-gray-600 hover:text-gray-700"
+                  className="font-medium xs:text-xs text-gray-600 hover:text-gray-700"
                   href="#"
                 >
                   Terms of Service
@@ -34,7 +34,7 @@ const FooterComponent: React.FC = () => {
               </li>
               <li className="p-2 sm:ml-1 sm:p-1">
                 <a
-                  className="font-medium sm:text-xs text-gray-600 hover:text-gray-700"
+                  className="font-medium xs:text-xs text-gray-600 hover:text-gray-700"
                   href="#"
                 >
                   Return Policy
@@ -42,7 +42,7 @@ const FooterComponent: React.FC = () => {
               </li>
               <li className="p-2 sm:ml-1 sm:p-1 ">
                 <a
-                  className="font-medium sm:text-xs text-gray-600 hover:text-gray-700"
+                  className="font-medium xs:text-xs text-gray-600 hover:text-gray-700"
                   href="#"
                 >
                   Contact Us
