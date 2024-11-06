@@ -19,6 +19,7 @@ type CardType = {
     info: {
       id: string;
       name: string;
+      defaultPrice: number;
       price: number;
       description: string;
       imageId: string;
@@ -45,8 +46,8 @@ const Page = ({ params }: Props) => {
   return (
     <>
       <section className={montserrat.className}>
-        <section className="flex justify-center pb-4 ">
-          <ul className="w-[700px]">
+        <section className="flex justify-center pb-4  ">
+          <ul className="w-[700px] max-w-3xl">
             <h1 className="text-center">{data ? "Menu" : null}</h1>
             {loading && <ShimmerMenu />}
             {error && <ErrorComponent error={error} />}
@@ -54,19 +55,23 @@ const Page = ({ params }: Props) => {
               data &&
               data?.map((item) => (
                 <li key={item.card.info.id}>
-                  <section className="flex justify-between items-center border-b-2 border-gray-500 p-4  ">
+                  <section className="flex justify-between items-center border-b-2 border-gray-500 p-4 xs:flex-col lg:flex-row xs:w-full">
                     <section
-                      className="flex flex-col gap-1 justify-start p-2 w-[60%]
+                      className="flex flex-col gap-1 justify-start p-2 lg:w-[60%]
                       "
                     >
                       <h3 className="font-bold">{item.card.info.name}</h3>
                       <p className="text-xs font-semibold">
-                        {item.card.info.price > 0
+                        {(item.card.info.defaultPrice || item.card.info.price) >
+                        0
                           ? new Intl.NumberFormat("en-IN", {
                               style: "currency",
                               currency: "INR",
-                            }).format(item.card.info.price / 100)
-                          : 100.0}
+                            }).format(
+                              (item.card.info.defaultPrice ||
+                                item.card.info.price) / 100
+                            )
+                          : null}
                       </p>
                       <p className="text-xs text-gray-500">
                         {" "}

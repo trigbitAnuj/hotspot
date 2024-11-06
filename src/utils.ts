@@ -15,7 +15,7 @@ export function getcartItems(cartItems: CartItem[]) {
 
 export const getSubTotal = (cart: CartItem[]) => {
   return cart.reduce((sum, { item, quantity }) => {
-    return item.card.info.price * quantity + sum;
+    return item.card.info.defaultPrice * quantity + sum;
   }, 0);
 };
 

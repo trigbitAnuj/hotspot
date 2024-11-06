@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useRef } from "react";
 import { CrousalType } from "../app/(pages)/page";
 
 import { CROUSAL_CDN_URL } from "../constants";
@@ -8,20 +10,19 @@ type PropsType = {
 };
 
 const CrousalComponent: React.FC<PropsType> = ({ data }) => {
+  const divRef = useRef<HTMLElement | null>(null);
   const handleOnClickLeft = () => {
-    const box = document.querySelector("#box");
-    if (box !== null) {
-      box.scrollLeft -= 270;
+    if (divRef.current) {
+      divRef.current.scrollLeft -= 270;
     }
   };
   const handleOnClickRight = () => {
-    const box = document.querySelector("#box");
-    if (box !== null) {
-      box.scrollLeft += 270;
+    if (divRef.current) {
+      divRef.current.scrollLeft += 270;
     }
   };
   return (
-    <section className="flex justify-center items-center bg-slate-500  md:hidden ">
+    <section className="flex justify-center items-center bg-slate-500">
       <button
         onClick={handleOnClickLeft}
         className=" text-black bg-white px-2 py-2   rounded-full "
@@ -44,14 +45,15 @@ const CrousalComponent: React.FC<PropsType> = ({ data }) => {
 
       <div className="w-[75%] h-60  p-2 relative overflow-hidden  ">
         <section
+          ref={divRef}
           className="flex  w-full  absolute [&::-webkit-scrollbar]:hidden  justify-center  gap-4  py-2  overflow-x-auto scroll-smooth "
           id="box"
         >
           {data.map((card) => (
             <Image
-              key={card.data.bannerId}
-              alt={card.data.title}
-              src={CROUSAL_CDN_URL + card.data.creativeId}
+              key={card.id}
+              alt={card.action.text}
+              src={CROUSAL_CDN_URL + card.imageId}
               width={180}
               height={180}
               className="rounded-sm"

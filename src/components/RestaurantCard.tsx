@@ -14,14 +14,20 @@ type Props = {
   name: string;
   cuisines: string[];
   area: string;
-  lastMileTravelString: string;
-  costForTwoString: string;
+  costForTwo: string;
   avgRating: string;
+  sla: any;
 };
 
+// const srcImage = (cloudinaryImageId: string) => {
+//   return (
+//     "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+//     cloudinaryImageId
+//   );
+// };
 const srcImage = (cloudinaryImageId: string) => {
   return (
-    "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
     cloudinaryImageId
   );
 };
@@ -31,9 +37,9 @@ const RestaurantCard: React.FC<Props> = ({
   name,
   cuisines,
   area,
-  lastMileTravelString,
-  costForTwoString,
+  costForTwo,
   avgRating,
+  sla,
 }) => {
   return (
     <section className=" min-w-[200px] w-[220px]  h-[300px]  p-2  border rounded-md mt-5 mb-5 shadow-custom transition-transform hover:-translate-y-1 duration-500 ">
@@ -58,9 +64,9 @@ const RestaurantCard: React.FC<Props> = ({
           {avgRating}
         </h4>
         <h4>•</h4>
-        <h4 className="text-xs">{lastMileTravelString}</h4>
+        <h4 className="text-xs">{sla.lastMileTravelString}</h4>
         <h4>•</h4>
-        <h4 className="text-xs">{costForTwoString}</h4>
+        <h4 className="text-xs">{costForTwo}</h4>
       </span>
     </section>
   );

@@ -59,7 +59,7 @@ const ContactForm: React.FC = () => {
 
   return (
     <section className="flex justify-center mt-4 gap-2 min-w-[420px] min-h-screen ">
-      <section className="left md:hidden lg:ml-8">
+      <section className="left xs:hidden lg:block lg:ml-8">
         <Image
           src={"/Contact-Us.png"}
           alt="contact-img"
@@ -86,7 +86,7 @@ const ContactForm: React.FC = () => {
             id="FullName"
             value={user.fullName}
             onChange={handleChange}
-            className="border border-[#98a7ff] p-2 m-2 w-[30vw] md:w-[50vw]  rounded-md shadow-md shadow-[#98a7ff]/50 "
+            className="border border-[#98a7ff] p-2 m-2 xs:w-full lg:w-[50vw] rounded-md shadow-md shadow-[#98a7ff]/50 "
           />
           <input
             required
@@ -96,7 +96,7 @@ const ContactForm: React.FC = () => {
             id="Email"
             value={user.email}
             onChange={handleChange}
-            className="border border-[#98a7ff] p-2 m-2 w-[30vw] md:w-[50vw]  rounded-md shadow-md shadow-[#98a7ff]/50 "
+            className="border border-[#98a7ff] p-2 m-2 xs:w-full lg:w-[50vw] rounded-md shadow-md shadow-[#98a7ff]/50 "
           />
 
           <textarea
@@ -108,7 +108,7 @@ const ContactForm: React.FC = () => {
             value={user.message}
             onChange={handleChange}
             placeholder="Enter message"
-            className="border border-[#98a7ff] p-2  m-2 w-[30vw] md:w-[50vw]   rounded-sm shadow-md shadow-[#98a7ff]/50 xs:w-[60vw]"
+            className="border border-[#98a7ff] p-2  m-2 xs:w-full lg:w-[50vw]   rounded-sm shadow-md shadow-[#98a7ff]/50 "
           />
           {status && status === "success" && (
             <p>Thank you for Submitting your message</p>

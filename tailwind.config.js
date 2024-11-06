@@ -7,18 +7,52 @@ module.exports = {
   ],
   theme: {
     screens: {
-      "2xl": { max: "1535px" },
+      xs: "0px",
+      sm: "575px",
+      // // => @media (min-width: 640px) { ... }
+      md: "768px",
+      // // => @media (min-width: 768px) { ... }
+      lg: "1024px",
+      // // => @media (min-width: 1024px) { ... }
+      xl: "1280px",
+      // // => @media (min-width: 1280px) { ... }
+      "2xl": "1536px",
+      // // => @media (min-width: 1536px) { ... }
 
-      xl: { max: "1279px" },
+      // xs: '450px',
+      // => @media (min-width: 450px) { ... }
 
-      lg: { max: "1280px" },
+      // sm: '575px',
+      // => @media (min-width: 576px) { ... }
 
-      md: { max: "767px" },
+      // md: '768px',
+      // => @media (min-width: 768px) { ... }
 
-      sm: { max: "650px" },
+      // lg: '992px',
+      // => @media (min-width: 992px) { ... }
 
-      xs: { max: "460px" },
+      // xl: '1200px',
+      // => @media (min-width: 1200px) { ... }
+
+      // '2xl': '1400px',
+      // => @media (min-width: 1400px) { ... }
     },
+
+    // screens: {
+    //   "2xl": { max: "1535px" },
+    //   // => @media (max-width: 1535px) { ... }
+
+    //   xl: { max: "1279px" },
+    //   // => @media (max-width: 1279px) { ... }
+
+    //   lg: { max: "1023px" },
+    //   // => @media (max-width: 1023px) { ... }
+
+    //   md: { max: "767px" },
+    //   // => @media (max-width: 767px) { ... }
+
+    //   sm: { max: "639px" },
+    // },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

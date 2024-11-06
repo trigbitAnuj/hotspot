@@ -19,8 +19,8 @@ const Title: React.FC = () => {
         src="/logo.png"
         alt="app-logo"
         width={100}
-        height={100}
-        className="xs:hidden  sm:w-[60px] sm:h-[60px]"
+        height={1000}
+        className="xs:w-[80px] xs:h-[80px] lg:w-[100px] lg:h-[100px]"
       />
     </Link>
   );
@@ -65,10 +65,10 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <header className="flex  justify-between  bg-[#1b1b1b] shadow-header min-w-[420px] sm:py-2 sm:hidden  sticky top-0 z-20 ">
+      <header className="flex  justify-between  bg-[#1b1b1b] shadow-header xs:w-full sm:py-2 sticky top-0 z-20 min-h-[100px]">
         <Title />
 
-        <section className=" flex px-10 sm:hidden ">
+        <section className="px-10 xs:hidden lg:flex">
           <ul className="flex items-center gap-10 sm:gap-6 text-white lg:text-lg md:text-base sm:text-sm xs:text-xs ">
             <li className="hover:text-blue-500 hover:underline active:underline ">
               <Link href="/">Home</Link>
@@ -100,11 +100,8 @@ const Header: React.FC = () => {
             {user && <ProfileComponent />}
           </ul>
         </section>
-      </header>
 
-      <header className="sm:flex  justify-between items-center  bg-[#1b1b1b] shadow-header min-w-[420px] sm:py-2 md:hidden lg:hidden xl:hidden">
-        <Title />
-        <section className="  mr-6 text-white sm:text-2xl">
+        <section className="xs:flex lg:hidden  mr-6 text-white sm:text-2xl items-center justify-end">
           <button onClick={handleMenuClick}>
             <FaHamburger />
           </button>
@@ -151,6 +148,16 @@ const Header: React.FC = () => {
           </div>
         ) : null}
       </header>
+
+      {/* <header className="sm:flex  justify-between items-center  bg-[#1b1b1b] shadow-header min-w-[420px] sm:py-2 md:hidden lg:hidden xl:hidden">
+        <Title />
+        <section className="  mr-6 text-white sm:text-2xl">
+          <button onClick={handleMenuClick}>
+            <FaHamburger />
+          </button>
+        </section>
+        
+      </header> */}
     </>
   );
 };
